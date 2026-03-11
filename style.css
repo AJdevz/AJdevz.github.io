@@ -1,37 +1,83 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-    background-color: #0f0f0f;
+    background: #0f0f0f;
     color: white;
 }
 
-header {
+.hero {
     text-align: center;
-    padding: 40px;
+    padding: 60px 20px;
     background: #151515;
 }
 
-h1 {
-    margin-bottom: 5px;
+.title {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.intro {
+    max-width: 700px;
+    margin: 20px auto;
+    line-height: 1.6;
 }
 
 .links a {
-    margin: 0 10px;
+    margin: 0 12px;
     color: #4CAF50;
     text-decoration: none;
 }
 
+.links a:hover {
+    text-decoration: underline;
+}
+
 section {
-    max-width: 900px;
+    max-width: 1000px;
     margin: auto;
-    padding: 40px;
+    padding: 50px 20px;
+}
+
+h2 {
+    margin-bottom: 30px;
 }
 
 .project {
     background: #1c1c1c;
-    padding: 20px;
+    padding: 30px;
+    margin-bottom: 40px;
+    border-radius: 8px;
+}
+
+.project-description {
+    line-height: 1.6;
+}
+
+.project video {
+    width: 100%;
     margin-top: 20px;
     border-radius: 6px;
+}
+
+.project img {
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 6px;
+}
+
+.project-links {
+    margin-top: 15px;
+}
+
+.project-links a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
 }
 
 ul li {
@@ -40,6 +86,6 @@ ul li {
 
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 30px;
     background: #151515;
 }
