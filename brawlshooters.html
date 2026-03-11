@@ -16,9 +16,9 @@
 <h1>Brawl Shooters</h1>
 
 <p>
-Brawl Shooters is a top-down roguelike shooter developed in Unity using C#. 
-The project focuses on implementing scalable gameplay systems such as enemy AI behaviour,
-wave spawning, player progression and weapon upgrades.
+Brawl Shooters is a top-down roguelike shooter developed in Unity using C#.
+The project focuses on implementing scalable gameplay systems such as enemy
+AI behaviour, wave spawning, player progression and weapon upgrades.
 </p>
 
 <video controls>
@@ -27,12 +27,34 @@ wave spawning, player progression and weapon upgrades.
 
 <img src="images/2026-03-1115-37-33-ezgif.com-video-to-gif-converter.gif">
 
+
+<h2>Project Overview</h2>
+
+<p>
+Brawl Shooters was developed as a gameplay systems project focused on
+designing and implementing the core mechanics required for a wave-based
+survival shooter.
+</p>
+
+<p>
+The project explores how scalable gameplay systems such as enemy spawning,
+AI behaviour, and player progression can be structured to support continuous
+gameplay loops in roguelike survival games.
+</p>
+
+<p>
+The gameplay loop revolves around defeating enemies, collecting experience
+points, and upgrading the player’s abilities in order to survive increasingly
+difficult waves.
+</p>
+
+
 <h2>Gameplay Overview</h2>
 
 <p>
 The player must survive waves of zombies inside an arena. Each wave increases
 in difficulty by increasing the number of enemies. Every five waves a boss
-enemy spawns with significantly higher health.
+enemy spawns with significantly higher health and damage.
 </p>
 
 <ul>
@@ -42,7 +64,8 @@ enemy spawns with significantly higher health.
 <li>Weapon upgrades when leveling up</li>
 </ul>
 
-<h2>Technical Systems</h2>
+
+<h2>Core Gameplay Systems</h2>
 
 <ul>
 <li>Wave spawning manager</li>
@@ -51,6 +74,68 @@ enemy spawns with significantly higher health.
 <li>Weapon upgrade system</li>
 <li>HUD elements for health, XP and waves</li>
 </ul>
+
+
+<h2>Wave System</h2>
+
+<p>
+The wave spawning system dynamically increases the number of enemies
+spawned as the player survives longer. This creates a gradual difficulty
+curve that encourages players to continuously improve their character
+through upgrades.
+</p>
+
+<p>
+Boss enemies appear every five waves, acting as difficulty spikes that
+challenge the player's build and positioning.
+</p>
+
+
+<h2>Enemy AI Behaviour</h2>
+
+<p>
+Enemy AI uses a lightweight movement system where enemies constantly
+move toward the player’s position. Since the arena does not contain
+complex obstacles, a simplified chase behaviour was implemented instead
+of using Unity's NavMesh system.
+</p>
+
+<p>
+This approach allowed for a large number of enemies to remain active
+without causing significant performance issues.
+</p>
+
+
+<h2>Player Progression System</h2>
+
+<p>
+Enemies drop experience orbs when defeated. Collecting these increases
+the player's experience level and allows the player to choose from
+different weapon upgrades.
+</p>
+
+<p>
+This system introduces roguelike progression mechanics where players
+gradually become stronger during a run while enemy waves simultaneously
+increase in difficulty.
+</p>
+
+
+<h2>Performance Considerations</h2>
+
+<p>
+Wave-based survival games can quickly introduce performance issues when
+large numbers of AI agents are active simultaneously. To maintain stable
+performance, the AI behaviour was intentionally designed to remain simple
+and lightweight.
+</p>
+
+<p>
+By avoiding complex pathfinding systems and using direct movement
+towards the player, the game can support larger enemy waves without
+placing unnecessary computational load on the engine.
+</p>
+
 
 <h2>Technical Challenges</h2>
 
@@ -61,17 +146,26 @@ causing unavoidable damage.
 </p>
 
 <p>
-This was fixed by adding a minimum spawn distance check when generating
-enemy spawn positions.
+This was fixed by introducing a minimum spawn distance check when generating
+enemy spawn positions, ensuring that enemies spawn outside of a safe radius
+around the player.
+</p>
+
+
+<h2>Expected Outcomes</h2>
+
+<p>
+The project demonstrates how modular gameplay systems can be designed
+to support scalable difficulty and long-term gameplay loops in survival
+shooter games.
 </p>
 
 <p>
-Another challenge was maintaining performance during large waves.
-Instead of using complex NavMesh pathfinding, a lightweight movement
-system was implemented where enemies directly move toward the player.
-Since the arena contains no obstacles, this approach significantly
-improved performance while keeping the behaviour believable.
+The systems implemented in Brawl Shooters also form the foundation for
+further experimentation with more advanced AI systems, such as the
+adaptive enemy behaviour explored in the Convergence project.
 </p>
+
 
 <div class="project-buttons">
 <a href="index.html">Back to Portfolio</a>
