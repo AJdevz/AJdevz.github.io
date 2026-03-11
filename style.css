@@ -21,6 +21,28 @@ body {
     margin-bottom: 10px;
 }
 
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #4CAF50;
+}
+
+.about-text {
+    max-width: 650px;
+    text-align: left;
+}
+
 .title {
     color: #4CAF50;
     font-weight: bold;
