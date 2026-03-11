@@ -4,36 +4,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Ahmed Alhaj | Gameplay Programmer</title>
+
 <link rel="stylesheet" href="style.css">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
 <header class="hero">
 
+<div class="about-container">
+
+<img src="images/Meee.jpg" class="profile-pic">
+
+<div class="about-text">
+
 <h1>Ahmed Alhaj</h1>
+
 <p class="title">Gameplay Programmer | Unity (C#) | Unreal Engine | AI Systems</p>
 
-<p class="intro">
+<p>
 I am a Games Programming student currently studying a BSc in Games Programming
 at SAE Institute London with over four years of experience developing gameplay
 systems using Unity and Unreal Engine.
 </p>
 
-<p class="intro">
+<p>
 My primary focus is gameplay programming, particularly enemy AI behaviour,
-combat systems, and scalable gameplay mechanics. I enjoy designing systems
-that create responsive and engaging gameplay experiences while remaining
-efficient and modular.
+combat systems, and scalable gameplay mechanics.
 </p>
 
-<p class="intro">
-Alongside my university work I regularly develop gameplay prototypes and
-technical experiments to improve my programming skills and explore new
-gameplay mechanics. I am currently seeking opportunities as a
-<b>Junior Gameplay Programmer, Game Developer, or Programming Intern</b>
-where I can contribute to building polished gameplay systems.
+<p>
+I am currently seeking a <b>Junior Gameplay Programmer, Game Developer,
+or Programming Intern</b> role where I can contribute to developing
+engaging gameplay experiences.
 </p>
 
 <div class="links">
@@ -42,57 +51,12 @@ where I can contribute to building polished gameplay systems.
 <a href="mailto:alhajahmed101@gmail.com">Email</a>
 </div>
 
+</div>
+
+</div>
+
 </header>
 
-<section>
-
-<h2>Featured Projects</h2>
-
-<div class="project">
-
-<h3>Convergence</h3>
-
-<p>
-Convergence is an experimental gameplay systems project developed in Unity
-that explores adaptive enemy AI behaviour in wave-based survival games.
-</p>
-
-<p>
-The project introduces a dynamic enemy merging system where nearby enemies
-combine to form stronger variants, creating emergent gameplay behaviour
-and forcing players to adapt their combat strategies.
-</p>
-
-<div class="project-buttons">
-<a href="convergence.html">Full Project Breakdown</a>
-<a href="https://github.com/AJdevz" target="_blank">Repository</a>
-</div>
-
-</div>
-
-<div class="project">
-
-<h3>Brawl Shooters</h3>
-
-<p>
-Brawl Shooters is a top-down wave-based action shooter built in Unity.
-The project focuses on building scalable gameplay systems including
-enemy AI behaviour, wave spawning mechanics, and player progression.
-</p>
-
-<p>
-Players fight increasingly difficult enemy waves, collect experience,
-and upgrade their abilities while surviving inside a confined arena.
-</p>
-
-<div class="project-buttons">
-<a href="brawlshooters.html">Full Project Breakdown</a>
-<a href="https://github.com/AJdevz" target="_blank">Repository</a>
-</div>
-
-</div>
-
-</section>
 
 <section>
 
@@ -100,7 +64,7 @@ and upgrade their abilities while surviving inside a confined arena.
 
 <div class="skills">
 
-<div>
+<div class="skill-box">
 <h4>Programming</h4>
 <ul>
 <li>C# (Unity)</li>
@@ -110,17 +74,17 @@ and upgrade their abilities while surviving inside a confined arena.
 </ul>
 </div>
 
-<div>
+<div class="skill-box">
 <h4>Gameplay Development</h4>
 <ul>
 <li>Combat Mechanics</li>
 <li>Wave Spawning Systems</li>
-<li>Player Progression Systems</li>
-<li>Rapid Gameplay Prototyping</li>
+<li>Player Progression</li>
+<li>Rapid Prototyping</li>
 </ul>
 </div>
 
-<div>
+<div class="skill-box">
 <h4>Tools</h4>
 <ul>
 <li>Unity Engine</li>
@@ -134,46 +98,75 @@ and upgrade their abilities while surviving inside a confined arena.
 
 </section>
 
+
 <section>
 
 <h2>Gameplay Systems & Mechanics Implemented</h2>
 
-<p>
-Across my projects and gameplay prototypes, I have implemented a wide range
-of gameplay systems that form the foundation of action and survival games.
-These systems focus on combat responsiveness, player progression, and
-clear gameplay feedback.
-</p>
+<ul class="systems">
 
-<ul>
-<li>Player movement and camera control systems</li>
-<li>Shooting and weapon firing mechanics</li>
-<li>Health (HP) systems and damage handling</li>
-<li>Damage feedback and enemy damage flash effects</li>
-<li>Experience (XP) collection and leveling systems</li>
-<li>Enemy AI chase behaviours</li>
-<li>Wave spawning and enemy management systems</li>
-<li>Boss spawning mechanics</li>
-<li>Weapon upgrade and progression systems</li>
-<li>Enemy merging and adaptive AI mechanics</li>
-<li>HUD elements including health, XP, and wave indicators</li>
-<li>Gameplay debugging and performance optimisation</li>
+<li>Player Movement Systems</li>
+<li>Shooting & Weapon Systems</li>
+<li>Health (HP) Systems</li>
+<li>Damage Flash & Combat Feedback</li>
+<li>Experience (XP) & Leveling Systems</li>
+<li>Enemy AI Chase Behaviour</li>
+<li>Wave Spawning Systems</li>
+<li>Boss Spawn Mechanics</li>
+<li>Weapon Upgrade Systems</li>
+<li>Enemy Merging AI Mechanics</li>
+<li>HUD Systems (HP, XP, Waves)</li>
+<li>Performance Optimisation</li>
+
 </ul>
 
 </section>
+
+
+<section>
+
+<h2>Featured Projects</h2>
+
+<div class="projects">
+
+<div class="project-card">
+
+<h3>Convergence</h3>
+
+<p>
+An experimental gameplay systems project exploring adaptive AI behaviour
+and enemy merging mechanics in wave-based survival gameplay.
+</p>
+
+<a href="convergence.html">Full Project Breakdown</a>
+
+</div>
+
+<div class="project-card">
+
+<h3>Brawl Shooters</h3>
+
+<p>
+A top-down wave survival shooter focused on implementing scalable
+enemy AI behaviour, progression systems, and combat mechanics.
+</p>
+
+<a href="brawlshooters.html">Full Project Breakdown</a>
+
+</div>
+
+</div>
+
+</section>
+
 
 <section>
 
 <h2>Let's Connect</h2>
 
 <p>
-I am always interested in connecting with other developers, recruiters,
-and studios working on exciting gameplay-driven projects.
-</p>
-
-<p>
-If you are looking for a Junior Gameplay Programmer or Programming Intern,
-feel free to reach out or connect with me.
+I am always interested in connecting with developers, studios,
+and recruiters working on exciting gameplay-driven projects.
 </p>
 
 <div class="links">
@@ -184,8 +177,11 @@ feel free to reach out or connect with me.
 
 </section>
 
+
 <footer>
+
 <p>© 2026 Ahmed Alhaj</p>
+
 </footer>
 
 </body>
