@@ -1,109 +1,112 @@
-<h2>Project Overview</h2>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Convergence</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<section>
+
+<div class="project">
+
+<h1>Convergence</h1>
 
 <p>
-Convergence is an experimental gameplay systems project developed in Unity
-that expands on the mechanics of Brawl Shooters. The goal of the project is
-to explore adaptive AI systems in wave-based games and investigate how enemy
-behaviour can dynamically evolve during gameplay.
+Convergence is an experimental gameplay systems project that expands
+on the mechanics of Brawl Shooters. The project focuses on developing
+an adaptive AI system where enemies dynamically react to gameplay
+conditions and player behaviour.
+</p>
+
+<video controls>
+<source src="images/2026-03-11%2015-46-57%20-%20Trim.mp4" type="video/mp4">
+</video>
+
+<img src="images/2026-03-1115-37-33-ezgif.com-video-to-gif-converter.gif">
+
+<h2>Research Goal</h2>
+
+<p>
+This project investigates whether adaptive AI systems can improve
+gameplay challenge and performance efficiency in wave-based games.
 </p>
 
 <p>
-Traditional wave-based games often increase difficulty by simply spawning
-more enemies. Convergence explores an alternative approach where enemies
-interact with each other and evolve into stronger forms through a merging
-mechanic. This creates emergent gameplay behaviour while potentially reducing
-the computational cost of managing large numbers of AI agents.
+Research Question:
+<b>How can adaptive AI systems, such as enemy merging mechanics,
+improve gameplay challenge and performance efficiency in wave-based games?</b>
 </p>
 
+<h2>Game Modes</h2>
 
-<h2>Research Question</h2>
+<h3>Classic Mode</h3>
 
 <p>
-How can adaptive AI systems, such as enemy merging mechanics, improve gameplay
-challenge and performance efficiency in wave-based games?
+Traditional wave-based gameplay where the player survives
+progressively harder enemy waves.
 </p>
 
-
-<h2>Research Inspiration</h2>
+<h3>Merge Mode</h3>
 
 <p>
-The project was partly inspired by the AI Director system used in
-Left 4 Dead, which dynamically adjusts enemy spawning and pacing
-based on player performance and game conditions.
+Enemies can dynamically merge when they are close to each other,
+forming stronger enemy variants. This creates emergent behaviour
+where the enemy composition evolves during gameplay.
 </p>
 
-<p>
-Rather than only increasing the number of enemies, Convergence focuses
-on evolving enemy behaviour during gameplay through interactions between
-AI agents.
-</p>
-
-
-<h2>Core Systems</h2>
+<h2>Adaptive AI System</h2>
 
 <ul>
-<li>Adaptive AI behaviour system</li>
 <li>Enemy proximity detection</li>
-<li>Enemy merging mechanic</li>
-<li>Dynamic enemy stat scaling</li>
-<li>Wave spawning and difficulty progression</li>
+<li>Dynamic enemy merging behaviour</li>
+<li>Adaptive difficulty scaling</li>
+<li>Wave spawning management</li>
+<li>AI performance optimisation</li>
 </ul>
-
-
-<h2>Adaptive Enemy System</h2>
-
-<p>
-Enemies are able to detect nearby enemies using proximity checks.
-When multiple enemies cluster together, they can merge into a stronger
-variant with increased health and damage.
-</p>
-
-<p>
-This creates emergent behaviour where the structure of the enemy wave
-changes dynamically depending on how enemies move and group together
-during gameplay.
-</p>
-
-
-<h2>Performance Considerations</h2>
-
-<p>
-One of the motivations behind the merging system is performance
-optimisation. Large numbers of AI agents can become computationally
-expensive, especially in wave-based survival games.
-</p>
-
-<p>
-By allowing enemies to merge into stronger variants, the system
-reduces the total number of active AI agents while maintaining
-gameplay difficulty.
-</p>
-
 
 <h2>Technical Challenges</h2>
 
 <p>
-One of the primary challenges was ensuring the merging mechanic
-remained readable and fair for the player. If enemies merged too
-frequently or unpredictably, it could make the gameplay feel chaotic.
+A major challenge was ensuring the merging mechanic remained readable
+and fair to the player. If enemies merged too frequently the gameplay
+became chaotic and difficult to understand.
 </p>
 
 <p>
-To solve this, merging behaviour is triggered based on proximity
-conditions and controlled through cooldown logic to prevent excessive
-merging events.
-</p>
-
-
-<h2>Expected Outcomes</h2>
-
-<p>
-The project will evaluate whether adaptive enemy systems can create
-more engaging gameplay experiences while maintaining performance
-efficiency compared to traditional wave-based spawning systems.
+This was solved by introducing controlled merge conditions and
+cooldown logic so enemies only merge under specific conditions.
 </p>
 
 <p>
-The research findings will help inform how emergent behaviour systems
-can be applied in future gameplay programming projects.
+The merging mechanic also reduces the number of active AI agents,
+which may improve performance compared to traditional spawning
+systems with large numbers of enemies.
 </p>
+
+<h2>Research Inspiration</h2>
+
+<p>
+The project draws inspiration from the AI Director system used in
+Left 4 Dead, where enemy spawning and pacing dynamically respond
+to gameplay conditions.
+</p>
+
+<div class="project-buttons">
+<a href="index.html">Back to Portfolio</a>
+<a href="https://github.com/AJdevz" target="_blank">GitHub</a>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 Ahmed Alhaj - Gameplay Programmer Portfolio</p>
+</footer>
+
+</body>
+</html>
