@@ -1,63 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-<meta charset="UTF-8">
-<title>Brawl Shooters</title>
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<section>
-
-<div class="project">
-
-<h1>Brawl Shooters</h1>
+<h2>Project Overview</h2>
 
 <p>
-Brawl Shooters is a top-down wave-based action game developed in Unity. 
-The project focuses on designing scalable gameplay systems including combat,
-enemy AI behaviour, and player progression.
+Brawl Shooters is a top-down roguelike shooter developed in Unity using C#. 
+The project focuses on building scalable gameplay systems such as enemy AI behaviour,
+wave spawning, player progression, and upgrade mechanics.
 </p>
 
-<video controls>
-<source src="images/2026-03-11%2015-46-57%20-%20Trim.mp4" type="video/mp4">
-</video>
+<p>
+The design goal was to create a fast-paced survival arena where the player fights
+increasing waves of zombies while collecting experience orbs to level up and upgrade
+their weapon. Every five waves a boss enemy appears, introducing a difficulty spike
+and testing the player’s ability to manage positioning and upgrades.
+</p>
 
-<img src="images/2026-03-1115-37-33-ezgif.com-video-to-gif-converter.gif">
 
-<h2>Gameplay Systems Implemented</h2>
+<h2>Gameplay Systems</h2>
 
 <ul>
-<li>Player movement and shooting mechanics</li>
-<li>Enemy AI behaviour and targeting</li>
-<li>Wave spawning system</li>
-<li>Player progression and upgrade system</li>
-<li>Gameplay UI feedback</li>
+<li>Wave spawning system with increasing enemy difficulty</li>
+<li>Enemy AI behaviour that automatically tracks and chases the player</li>
+<li>Experience and leveling system through collectible XP orbs</li>
+<li>Weapon upgrade system triggered on player level-up</li>
+<li>Boss encounters every five waves</li>
 </ul>
 
-<h2>Technical Focus</h2>
+
+<h2>Technical Implementation</h2>
 
 <p>
-The core focus of the project was gameplay programming and system scalability.
-The wave spawning system dynamically increases enemy difficulty over time,
-creating an adaptive gameplay loop that challenges the player as they survive
-longer.
+The wave system dynamically increases difficulty by scaling enemy health and
+enemy count over time. Boss enemies appear every five waves and have significantly
+higher health to create pacing spikes in gameplay.
 </p>
 
-<div class="project-buttons">
-<a href="index.html">Back to Portfolio</a>
-<a href="https://github.com/AJdevz" target="_blank">View GitHub</a>
-</div>
+<p>
+Enemy AI behaviour was implemented using a lightweight system where enemies
+continuously move toward the player without using Unity's NavMesh system.
+This decision was made because the arena does not contain obstacles, allowing
+the AI to remain performant even when large numbers of enemies are active.
+</p>
 
-</div>
+<p>
+XP orbs drop from defeated enemies and bosses. When the player collects them,
+their experience bar fills until they reach the next level, triggering an
+upgrade system that improves the player’s weapon performance.
+</p>
 
-</section>
 
-<footer>
-<p>© 2026 Ahmed Alhaj - Gameplay Programmer Portfolio</p>
-</footer>
+<h2>Technical Challenges</h2>
 
-</body>
-</html>
+<p>
+One challenge during development was ensuring enemies did not spawn unfairly
+close to the player. Early versions occasionally spawned enemies directly
+on top of the player, resulting in unavoidable damage.
+</p>
+
+<p>
+This was resolved by implementing a minimum spawn distance check when spawning
+enemies, ensuring they appear at least a fixed radius away from the player.
+</p>
+
+<p>
+Another challenge was maintaining performance during large waves. To address
+this, enemy behaviour was intentionally kept lightweight and avoided complex
+pathfinding systems. This allowed the game to maintain smooth performance
+even on lower-end hardware.
+</p>
+
+
+<h2>Design Goals</h2>
+
+<ul>
+<li>Prioritise gameplay responsiveness over graphical complexity</li>
+<li>Ensure the game runs on low-end hardware</li>
+<li>Create scalable systems that can be extended with new enemies or weapons</li>
+</ul>
