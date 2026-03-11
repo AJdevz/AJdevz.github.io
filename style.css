@@ -86,17 +86,14 @@ h2 {
     font-size: 24px;
 }
 
-/* ===== Media ===== */
+/* ===== Media (Videos & GIFs) ===== */
 
-.project video {
-    width: 100%;
-    margin-top: 20px;
-    border-radius: 8px;
-}
-
+.project video,
 .project img {
-    width: 100%;
-    margin-top: 15px;
+    display: block;
+    max-width: 100%;
+    width: 800px;
+    margin: 25px auto;
     border-radius: 8px;
 }
 
