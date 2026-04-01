@@ -1,1 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Experience - Ahmed Alhaj</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --bg-primary: #0f1419;
+            --bg-secondary: #1a1f2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b8c1;
+            --accent-blue: #00d4ff;
+            --accent-orange: #ff6b35;
+            --border: 2px solid var(--accent-blue);
+            --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: var(--border);
+            padding: 1.5rem 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--accent-blue);
+            text-shadow: 0 0 10px var(--accent-blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-orange);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--accent-blue);
+            text-shadow: 0 0 10px var(--accent-blue);
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 5rem 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .content h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            text-shadow: 0 0 20px var(--accent-blue);
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        /* Job Cards */
+        .job-card {
+            border: var(--border);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            background: var(--bg-secondary);
+            border-radius: 0;
+            box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.1), var(--shadow-glow);
+            transition: all 0.3s ease;
+        }
+
+        .job-card:hover {
+            border-color: var(--accent-orange);
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .job-card:hover .job-title {
+            color: var(--accent-orange);
+        }
+
+        .job-company {
+            color: var(--accent-orange);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .job-location {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-period {
+            color: var(--accent-blue);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .job-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .highlights-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-orange);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .job-highlights {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            padding-left: 0;
+        }
+
+        .job-highlights li {
+            color: var(--text-secondary);
+            padding: 0.6rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .job-highlights li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .tech-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-blue);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tech-badge {
+            background: transparent;
+            border: 1px solid var(--accent-blue);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            border-color: var(--accent-orange);
+            color: var(--accent-orange);
+            box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Education Section */
+        .education-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: var(--border);
+        }
+
+        .education-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent-orange);
+        }
+
+        .education-card {
+            border: 2px solid var(--accent-orange);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 0;
+            box-shadow: inset 0 0 15px rgba(255, 107, 53, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .edu-degree {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-school {
+            color: var(--accent-orange);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-period {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .skills-gained {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: var(--border);
+            padding: 2.5rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.75rem;
+            }
+
+            .content {
+                padding: 2rem 1rem;
+            }
+
+            .content h1 {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .job-header {
+                flex-direction: column;
+            }
+
+            .job-card {
+                padding: 1.5rem;
+            }
+
+            .tech-stack {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .tech-badge {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">AHMED.DEV</div>
+            <ul>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="experience.html" class="nav-link active">Experience</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <section>
+        <div class="container">
+            <div class="content">
+                <h1>Work Experience</h1>
+                
+                <p class="intro-text">
+                    I bring a diverse background spanning education, professional development, and hands-on game programming experience. 
+                    My journey from foundational computer science education through advanced game programming has equipped me with strong 
+                    technical skills and collaborative experience across multiple platforms and technologies.
+                </p>
+
+                <!-- GCSE Experience -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">GCSE Computer Science</div>
+                            <div class="job-location">Secondary Education</div>
+                        </div>
+                        <div class="job-period">2015 - 2019</div>
+                    </div>
+                    
+                    <div class="job-description">
+                        During my GCSE Computer Science course, I developed a strong foundation in core programming concepts and problem-solving. 
+                        I gained practical experience with multiple programming languages and database design, establishing the fundamental skills 
+                        that would form the basis of my continued technical development.
+                    </div>
+
+                    <div class="highlights-title">Key Learning Areas:</div>
+                    <ul class="job-highlights">
+                        <li>Algorithmic problem-solving and computational thinking</li>
+                        <li>Object-oriented programming principles and design patterns</li>
+                        <li>Database design and SQL query optimization</li>
+                        <li>Code structuring and best practices for maintainability</li>
+                        <li>Web development fundamentals and server-client architecture</li>
+                    </ul>
+
+                    <div class="tech-title">Technologies & Languages:</div>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Java</span>
+                        <span class="tech-badge">SQL</span>
+                        <span class="tech-badge">PHP</span>
+                        <span class="tech-badge">C#</span>
+                        <span class="tech-badge">HTML</span>
+                        <span class="tech-badge">CSS</span>
+                    </div>
+                </div>
+
+                <!-- A Levels Experience -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Extended Diploma Level 3 Information Technology</div>
+                            <div class="job-company">Ark Burlington Danes Academy</div>
+                            <div class="job-location">London, UK</div>
+                        </div>
+                        <div class="job-period">09/2019 - 09/2021</div>
+                    </div>
+                    
+                    <div class="job-description">
+                        This qualification built upon my GCSE foundation with more advanced and specialized IT training. I advanced my programming 
+                        expertise, learned professional development methodologies, and gained exposure to enterprise-level software practices. 
+                        The curriculum provided both theoretical knowledge and practical hands-on experience with industry-standard tools and frameworks.
+                    </div>
+
+                    <div class="highlights-title">Key Learning Areas:</div>
+                    <ul class="job-highlights">
+                        <li>Advanced object-oriented programming and design principles</li>
+                        <li>Database administration and complex query optimization</li>
+                        <li>Web application development with modern frameworks</li>
+                        <li>Software testing strategies and quality assurance methodologies</li>
+                        <li>System analysis and technical documentation practices</li>
+                        <li>Introduction to agile development methodologies</li>
+                    </ul>
+
+                    <div class="tech-title">Technologies & Languages:</div>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Java</span>
+                        <span class="tech-badge">SQL</span>
+                        <span class="tech-badge">PHP</span>
+                        <span class="tech-badge">C#</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">HTML</span>
+                        <span class="tech-badge">CSS</span>
+                    </div>
+                </div>
+
+                <!-- Workshops Experience -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Professional Workshops & Industry Exposure</div>
+                            <div class="job-company">Dell, Capgemini, TfL (Transport for London)</div>
+                            <div class="job-location">London, UK</div>
+                        </div>
+                        <div class="job-period">2016 - 2017</div>
+                    </div>
+                    
+                    <div class="job-description">
+                        I participated in multiple professional workshops and industry events hosted by leading technology companies. 
+                        These experiences provided invaluable insights into enterprise software development, professional workplace culture, 
+                        and the intersection of technical skills with business objectives. I gained exposure to real-world project challenges 
+                        and learned essential soft skills from experienced industry professionals.
+                    </div>
+
+                    <div class="highlights-title">Key Learning Areas:</div>
+                    <ul class="job-highlights">
+                        <li>Professional communication and cross-functional collaboration</li>
+                        <li>Enterprise-scale software architecture and system design</li>
+                        <li>Project management practices in large organizations</li>
+                        <li>Technical leadership and mentoring approaches</li>
+                        <li>Code review processes and quality assurance standards</li>
+                        <li>Problem-solving in complex, multi-stakeholder environments</li>
+                        <li>Understanding business requirements and translating them to technical solutions</li>
+                    </ul>
+
+                    <div class="tech-title">Companies & Focus Areas:</div>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Dell</span>
+                        <span class="tech-badge">Capgemini</span>
+                        <span class="tech-badge">Transport for London</span>
+                        <span class="tech-badge">Enterprise Development</span>
+                        <span class="tech-badge">Soft Skills Training</span>
+                    </div>
+                </div>
+
+                <!-- Education Section -->
+                <div class="education-section">
+                    <h2>Formal Education</h2>
+
+                    <div class="education-card">
+                        <div class="edu-degree">Games Programming BSc</div>
+                        <div class="edu-school">SAE Institute London</div>
+                        <div class="edu-period">10/2024 - Ongoing</div>
+                        <div class="skills-gained">
+                            <strong>Focus:</strong> Advanced gameplay programming, AI systems, engine optimization, and professional game development practices. 
+                            Extensive team-based project work alongside solo projects leveraging C#, C++, and modern game engines. All coursework and projects 
+                            maintained on GitHub for version control and portfolio demonstration.
+                        </div>
+                    </div>
+
+                    <div class="education-card">
+                        <div class="edu-degree">Game Design BSc</div>
+                        <div class="edu-school">University of Liverpool</div>
+                        <div class="edu-period">09/2021 - 09/2023</div>
+                        <div class="skills-gained">
+                            <strong>Focus:</strong> Game design theory, player psychology, systems design, and prototyping. Combined creative design thinking 
+                            with technical implementation skills. Completed multiple team projects and individual assignments showcasing various game genres 
+                            and design philosophies. All projects documented on GitHub with full development history.
+                        </div>
+                    </div>
+
+                    <div class="education-card">
+                        <div class="edu-degree">Extended Diploma Level 3 Information Technology</div>
+                        <div class="edu-school">Ark Burlington Danes Academy</div>
+                        <div class="edu-period">09/2019 - 09/2021</div>
+                        <div class="skills-gained">
+                            <strong>Focus:</strong> Comprehensive IT education covering software development, database management, and enterprise applications. 
+                            Developed strong foundations in multiple programming languages and software engineering principles while maintaining academic excellence.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Experience -->
+                <div class="job-card" style="margin-top: 2.5rem;">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Continuous Project Development</div>
+                            <div class="job-company">SAE Institute London & University Projects</div>
+                        </div>
+                    </div>
+                    
+                    <div class="job-description">
+                        Throughout my education at SAE Institute London and University of Liverpool, I have developed a comprehensive portfolio of 
+                        both team-based and individual projects. These projects showcase my ability to collaborate effectively, independently solve 
+                        complex problems, and deliver polished, production-ready software.
+                    </div>
+
+                    <div class="highlights-title">Project Experience:</div>
+                    <ul class="job-highlights">
+                        <li>Multiple team-based game development projects using agile methodologies</li>
+                        <li>Solo programming projects demonstrating mastery of individual skill areas</li>
+                        <li>Full game lifecycle experience from prototyping through post-launch optimization</li>
+                        <li>Version control and collaborative development using Git and GitHub</li>
+                        <li>Code documentation, technical writing, and project presentation skills</li>
+                        <li>Cross-functional collaboration with designers, artists, and producers</li>
+                    </ul>
+
+                    <div class="tech-title">All Projects Available:</div>
+                    <div class="tech-stack">
+                        <span class="tech-badge"><a href="https://github.com/Kylxua" target="_blank" style="color: var(--text-secondary); text-decoration: none;">GitHub Profile</a></span>
+                        <span class="tech-badge"><a href="https://github.com/AJdevz" target="_blank" style="color: var(--text-secondary); text-decoration: none;">University GitHub</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Ahmed Alhaj - Gameplay Programmer Portfolio</p>
+    </footer>
+</body>
+</html>
