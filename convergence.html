@@ -1,193 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<title>Convergence</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convergence - Ahmed Alhaj</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0f1419;
+            --bg-secondary: #1a1f2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b8c1;
+            --accent-blue: #00d4ff;
+            --accent-orange: #ff6b35;
+            --border: 2px solid var(--accent-blue);
+            --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: var(--border);
+            padding: 1.5rem 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--accent-blue);
+            text-shadow: 0 0 10px var(--accent-blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-orange);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--accent-blue);
+            text-shadow: 0 0 10px var(--accent-blue);
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Project Section */
+        .project {
+            padding: 5rem 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .project h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            text-shadow: 0 0 20px var(--accent-blue);
+        }
+
+        .project h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 900;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent-orange);
+        }
+
+        .project p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .project b {
+            color: var(--accent-blue);
+            font-weight: 700;
+        }
+
+        .project video,
+        .project img {
+            width: 100%;
+            max-width: 100%;
+            margin: 2rem 0;
+            border: var(--border);
+            border-radius: 0;
+            box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.1), var(--shadow-glow);
+            padding: 0;
+        }
+
+        .project ul {
+            list-style: none;
+            margin: 1.5rem 0;
+            padding-left: 0;
+        }
+
+        .project li {
+            padding: 0.8rem 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .project li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .project-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: var(--border);
+        }
+
+        .project-buttons a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border: 2px solid var(--accent-blue);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .project-buttons a:hover {
+            background: var(--accent-blue);
+            color: var(--bg-primary);
+            box-shadow: 0 0 20px var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        .project-buttons a.back:hover {
+            background: var(--accent-orange);
+            border-color: var(--accent-orange);
+            box-shadow: 0 0 20px var(--accent-orange);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: var(--border);
+            padding: 2.5rem;
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 3rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.75rem;
+            }
+
+            .project {
+                padding: 2rem 1rem;
+            }
+
+            .project h1 {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .project h2 {
+                font-size: 1.5rem;
+                margin-top: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .project-buttons {
+                flex-direction: column;
+            }
+
+            .project-buttons a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">AHMED.DEV</div>
+            <ul>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<section>
+    <!-- Project Content -->
+    <section>
+        <div class="container">
+            <div class="project">
+                <h1>Convergence</h1>
 
-<div class="project">
+                <p>
+                    Convergence is an experimental gameplay systems project developed in Unity
+                    that expands on the mechanics of Brawl Shooters. The project focuses on
+                    developing adaptive AI systems where enemies dynamically react to gameplay
+                    conditions and interact with each other during combat.
+                </p>
 
-<h1>Convergence</h1>
+                <video controls>
+                    <source src="images/2026-03-11%2015-46-57%20-%20Trim.mp4" type="video/mp4">
+                </video>
 
-<p>
-Convergence is an experimental gameplay systems project developed in Unity
-that expands on the mechanics of Brawl Shooters. The project focuses on
-developing adaptive AI systems where enemies dynamically react to gameplay
-conditions and interact with each other during combat.
-</p>
+                <img src="images/2026-03-1115-37-33-ezgif.com-video-to-gif-converter.gif" alt="Convergence Gameplay">
 
-<video controls>
-<source src="images/2026-03-11%2015-46-57%20-%20Trim.mp4" type="video/mp4">
-</video>
+                <h2>Project Overview</h2>
 
-<img src="images/2026-03-1115-37-33-ezgif.com-video-to-gif-converter.gif">
+                <p>
+                    Traditional wave-based survival games often increase difficulty by spawning
+                    larger numbers of enemies. Convergence explores an alternative design
+                    approach where enemy behaviour evolves dynamically during gameplay.
+                </p>
 
+                <p>
+                    Instead of simply increasing enemy quantity, enemies are able to interact
+                    with each other and merge into stronger variants. This creates emergent
+                    gameplay behaviour and allows enemy waves to evolve organically depending
+                    on how enemies move and cluster together.
+                </p>
 
-<h2>Project Overview</h2>
+                <h2>Research Goal</h2>
 
-<p>
-Traditional wave-based survival games often increase difficulty by spawning
-larger numbers of enemies. Convergence explores an alternative design
-approach where enemy behaviour evolves dynamically during gameplay.
-</p>
+                <p>
+                    This project investigates whether adaptive AI systems can improve gameplay
+                    challenge and performance efficiency in wave-based survival games.
+                </p>
 
-<p>
-Instead of simply increasing enemy quantity, enemies are able to interact
-with each other and merge into stronger variants. This creates emergent
-gameplay behaviour and allows enemy waves to evolve organically depending
-on how enemies move and cluster together.
-</p>
+                <p>
+                    <b>Research Question:</b> How can adaptive AI systems, such as enemy merging mechanics, improve
+                    gameplay challenge and performance efficiency in wave-based games?
+                </p>
 
+                <h2>Research Inspiration</h2>
 
-<h2>Research Goal</h2>
+                <p>
+                    The project draws inspiration from the AI Director system used in
+                    Left 4 Dead, where enemy spawning and pacing dynamically respond
+                    to gameplay conditions and player performance.
+                </p>
 
-<p>
-This project investigates whether adaptive AI systems can improve gameplay
-challenge and performance efficiency in wave-based survival games.
-</p>
+                <p>
+                    Rather than only adjusting enemy numbers, Convergence focuses on evolving
+                    enemy behaviour during gameplay through interactions between AI agents.
+                </p>
 
-<p>
-Research Question:
-<b>How can adaptive AI systems, such as enemy merging mechanics, improve
-gameplay challenge and performance efficiency in wave-based games?</b>
-</p>
+                <h2>Game Modes</h2>
 
+                <img src="images/ModeMenu.gif" alt="Game Mode Menu">
 
-<h2>Research Inspiration</h2>
+                <h3 style="color: var(--accent-blue); font-family: 'Orbitron', sans-serif; margin-top: 2rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Escalation Mode</h3>
 
-<p>
-The project draws inspiration from the AI Director system used in
-Left 4 Dead, where enemy spawning and pacing dynamically respond
-to gameplay conditions and player performance.
-</p>
+                <p><b>Description:</b></p>
 
-<p>
-Rather than only adjusting enemy numbers, Convergence focuses on evolving
-enemy behaviour during gameplay through interactions between AI agents.
-</p>
+                <ul>
+                    <li>Traditional wave-based gameplay where the player must survive increasingly difficult enemy waves</li>
+                    <li>Difficulty increases through enemy numbers, health scaling, and spawn rates</li>
+                </ul>
 
+                <h3 style="color: var(--accent-orange); font-family: 'Orbitron', sans-serif; margin-top: 2rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Evolution Mode</h3>
 
-<h2>Game Modes</h2>
+                <p><b>Description:</b></p>
 
-<img src="images/ModeMenu.gif">
+                <ul>
+                    <li>Enemies dynamically merge when they are close to each other, forming stronger variants</li>
+                    <li>Stronger enemies have increased health and damage</li>
+                    <li>This introduces emergent gameplay behaviour where the structure of each wave evolves during combat</li>
+                </ul>
 
-<h3>Escalation Mode</h3>
+                <h2>Core Gameplay Systems</h2>
 
-<p><b>Description:</b></p>
+                <ul>
+                    <li>Adaptive AI behaviour system</li>
+                    <li>Enemy proximity detection</li>
+                    <li>Dynamic enemy merging mechanic</li>
+                    <li>Wave spawning and difficulty progression</li>
+                    <li>Player progression and combat systems</li>
+                    <li>AI performance optimisation</li>
+                </ul>
 
-<ul>
-Traditional wave-based gameplay where the player must survive
-increasingly difficult enemy waves. Difficulty increases through
-enemy numbers, health scaling, and spawn rates.
-</ul>
+                <h2>Adaptive Enemy System</h2>
 
-<h3>Evolution Mode</h3>
+                <p>
+                    Enemies are able to detect nearby enemies through proximity checks.
+                    When groups of enemies cluster together they can merge into a stronger
+                    variant with increased health, damage, and durability.
+                </p>
 
-<p><b>Description:</b></p>
+                <p>
+                    This creates emergent behaviour where enemy waves organically change
+                    composition during gameplay. A large group of small enemies may evolve
+                    into fewer but stronger enemies, forcing the player to adapt their
+                    combat strategy.
+                </p>
 
-<ul>
-Enemies dynamically merge when they are close to each other,
-forming stronger enemy variants with increased health and damage.
-This introduces emergent gameplay behaviour where the structure
-of each wave evolves during combat.
-</ul>
+                <h2>Performance Considerations</h2>
 
+                <p>
+                    Wave-based survival games can become computationally expensive when
+                    large numbers of AI agents are active simultaneously. Traditional
+                    difficulty scaling methods often rely on spawning additional enemies,
+                    which can negatively impact performance.
+                </p>
 
-<h2>Core Gameplay Systems</h2>
+                <p>
+                    The merging mechanic provides an alternative approach by reducing the
+                    total number of active AI agents while maintaining gameplay difficulty.
+                    Multiple enemies can combine into stronger variants, lowering the
+                    number of AI entities being processed while preserving challenge.
+                </p>
 
-<ul>
-<li>Adaptive AI behaviour system</li>
-<li>Enemy proximity detection</li>
-<li>Dynamic enemy merging mechanic</li>
-<li>Wave spawning and difficulty progression</li>
-<li>Player progression and combat systems</li>
-<li>AI performance optimisation</li>
-</ul>
+                <h2>Technical Challenges</h2>
 
+                <p>
+                    One of the primary challenges was ensuring that the merging mechanic
+                    remained readable and fair for the player. If enemies merged too
+                    frequently or unpredictably, the gameplay became chaotic and difficult
+                    to understand.
+                </p>
 
-<h2>Adaptive Enemy System</h2>
+                <p>
+                    To solve this, merging behaviour is triggered based on controlled
+                    proximity conditions and cooldown logic. This prevents excessive
+                    merging events and ensures that enemy evolution remains predictable
+                    and understandable for the player.
+                </p>
 
-<p>
-Enemies are able to detect nearby enemies through proximity checks.
-When groups of enemies cluster together they can merge into a stronger
-variant with increased health, damage, and durability.
-</p>
+                <h2>Expected Outcomes</h2>
 
-<p>
-This creates emergent behaviour where enemy waves organically change
-composition during gameplay. A large group of small enemies may evolve
-into fewer but stronger enemies, forcing the player to adapt their
-combat strategy.
-</p>
+                <p>
+                    The project evaluates whether adaptive enemy systems can create more
+                    engaging gameplay experiences compared to traditional wave-based
+                    difficulty scaling.
+                </p>
 
+                <p>
+                    The research findings will help inform how emergent AI behaviour and
+                    dynamic enemy systems can be implemented in future gameplay programming
+                    projects.
+                </p>
 
-<h2>Performance Considerations</h2>
+                <div class="project-buttons">
+                    <a href="index.html" class="back">Back to Portfolio</a>
+                    <a href="https://github.com/AJdevz" target="_blank">GitHub Repository</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<p>
-Wave-based survival games can become computationally expensive when
-large numbers of AI agents are active simultaneously. Traditional
-difficulty scaling methods often rely on spawning additional enemies,
-which can negatively impact performance.
-</p>
-
-<p>
-The merging mechanic provides an alternative approach by reducing the
-total number of active AI agents while maintaining gameplay difficulty.
-Multiple enemies can combine into stronger variants, lowering the
-number of AI entities being processed while preserving challenge.
-</p>
-
-
-<h2>Technical Challenges</h2>
-
-<p>
-One of the primary challenges was ensuring that the merging mechanic
-remained readable and fair for the player. If enemies merged too
-frequently or unpredictably, the gameplay became chaotic and difficult
-to understand.
-</p>
-
-<p>
-To solve this, merging behaviour is triggered based on controlled
-proximity conditions and cooldown logic. This prevents excessive
-merging events and ensures that enemy evolution remains predictable
-and understandable for the player.
-</p>
-
-
-<h2>Expected Outcomes</h2>
-
-<p>
-The project evaluates whether adaptive enemy systems can create more
-engaging gameplay experiences compared to traditional wave-based
-difficulty scaling.
-</p>
-
-<p>
-The research findings will help inform how emergent AI behaviour and
-dynamic enemy systems can be implemented in future gameplay programming
-projects.
-</p>
-
-
-<div class="project-buttons">
-<a href="index.html">Back to Portfolio</a>
-<a href="https://github.com/AJdevz" target="_blank">GitHub</a>
-</div>
-
-</div>
-
-</section>
-
-<footer>
-<p>© 2026 Ahmed Alhaj - Gameplay Programmer Portfolio</p>
-</footer>
-
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Ahmed Alhaj - Gameplay Programmer Portfolio</p>
+    </footer>
 </body>
 </html>
