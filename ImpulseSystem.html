@@ -1,1 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImpulseSystem - Ahmed Alhaj</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --bg-primary: #0f1419;
+            --bg-secondary: #1a1f2e;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b8c1;
+            --accent-blue: #00d4ff;
+            --accent-orange: #ff6b35;
+            --border: 2px solid var(--accent-blue);
+            --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: var(--border);
+            padding: 1.5rem 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--accent-blue);
+            text-shadow: 0 0 10px var(--accent-blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-orange);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--accent-blue);
+            text-shadow: 0 0 10px var(--accent-blue);
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .project {
+            padding: 5rem 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .project h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            text-shadow: 0 0 20px var(--accent-blue);
+        }
+
+        .project h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 900;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent-orange);
+        }
+
+        .project p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .project b {
+            color: var(--accent-blue);
+            font-weight: 700;
+        }
+
+        .project video,
+        .project img {
+            width: 100%;
+            max-width: 100%;
+            margin: 2rem 0;
+            border: var(--border);
+            border-radius: 0;
+            box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.1), var(--shadow-glow);
+            padding: 0;
+        }
+
+        .project ul {
+            list-style: none;
+            margin: 1.5rem 0;
+            padding-left: 0;
+        }
+
+        .project li {
+            padding: 0.8rem 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .project li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .project-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: var(--border);
+        }
+
+        .project-buttons a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border: 2px solid var(--accent-blue);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .project-buttons a:hover {
+            background: var(--accent-blue);
+            color: var(--bg-primary);
+            box-shadow: 0 0 20px var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        .project-buttons a.back:hover {
+            background: var(--accent-orange);
+            border-color: var(--accent-orange);
+            box-shadow: 0 0 20px var(--accent-orange);
+        }
+
+        footer {
+            background: var(--bg-secondary);
+            border-top: var(--border);
+            padding: 2.5rem;
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 3rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.75rem;
+            }
+
+            .project {
+                padding: 2rem 1rem;
+            }
+
+            .project h1 {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .project h2 {
+                font-size: 1.5rem;
+                margin-top: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .project-buttons {
+                flex-direction: column;
+            }
+
+            .project-buttons a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">AHMED.DEV</div>
+            <ul>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section>
+        <div class="container">
+            <div class="project">
+                <h1>ImpulseSystem</h1>
+
+                <p>
+                    ImpulseSystem is a physics-based movement prototype developed in Unity as part of my Advanced Specialised Project at SAE Institute London. The project focuses on implementing advanced physics mechanics inspired by Shotgun Cop Man, where player movement is powered entirely by shotgun recoil forces rather than traditional locomotion systems.
+                </p>
+
+                <p>
+                    This is a technical prototype designed to showcase mechanical depth and physics implementation rather than a complete game experience. The core focus is demonstrating mastery of physics-based gameplay programming and custom impulse systems.
+                </p>
+
+                <video controls>
+                    <source src="images/impulse-gameplay.mp4" type="video/mp4">
+                </video>
+
+                <img src="images/impulse-gameplay.gif" alt="ImpulseSystem Gameplay">
+
+                <h2>Project Overview</h2>
+
+                <p>
+                    Traditional first-person shooters use standard movement systems where players walk and sprint using conventional WASD controls. ImpulseSystem reimagines FPS movement by making the shotgun itself the primary method of traversal. Every shot fires a powerful recoil impulse that propels the player through the environment, requiring mastery of momentum, directional force, and physics-based control.
+                </p>
+
+                <p>
+                    The game doesn't focus on combat or narrative - instead, it's a pure mechanics prototype designed to explore how physics-based propulsion can create engaging, skill-based gameplay. Players must learn to control momentum, manage air time, and use environmental awareness to navigate increasingly challenging spaces.
+                </p>
+
+                <h2>Specialisation and Learning Goals</h2>
+
+                <p>
+                    This project was undertaken as my Advanced Specialised Project to identify and develop a specific area of expertise within gameplay programming. I chose physics-based movement systems and recoil mechanics as my focus because this represents a niche specialisation in game development that aligns with my long-term career direction in advanced gameplay systems.
+                </p>
+
+                <p>
+                    By implementing a physics-driven prototype rather than a narrative game, I demonstrate independent decision-making about what constitutes meaningful learning. This project proves I can identify gaps in my skillset - advanced physics programming and impulse-based systems - and systematically build expertise in those areas through focused, technical work.
+                </p>
+
+                <h2>Technical Implementation</h2>
+
+                <h3 style="color: var(--accent-blue); font-family: 'Orbitron', sans-serif; margin-top: 2rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Impulse System and Physics</h3>
+
+                <img src="images/impulse-system.gif" alt="Impulse Physics System" style="margin: 2rem 0; border: var(--border); border-radius: 0; box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.1), var(--shadow-glow); width: 100%; max-width: 100%;">
+
+                <p>
+                    The core of ImpulseSystem is a physics-driven movement engine where shotgun recoil acts as the primary locomotion force. Rather than traditional WASD movement, players fire their weapon to generate directional impulses that propel them through space.
+                </p>
+
+                <ul>
+                    <li>Rigidbody-based character controller using impulse forces instead of velocity modification</li>
+                    <li>Directional recoil calculation based on weapon orientation and firing vector</li>
+                    <li>Custom drag and gravity scaling to maintain gameplay feel while preserving physics accuracy</li>
+                    <li>Air control system allowing mid-flight momentum adjustment through rapid firing</li>
+                    <li>Collision response refinement to prevent clipping and maintain fair play</li>
+                </ul>
+
+                <h3 style="color: var(--accent-orange); font-family: 'Orbitron', sans-serif; margin-top: 2rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Shooting System and Raycasting</h3>
+
+                <img src="images/shooting-system.gif" alt="Shooting System and Raycast" style="margin: 2rem 0; border: var(--border); border-radius: 0; box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.1), var(--shadow-glow); width: 100%; max-width: 100%;">
+
+                <p>
+                    The weapon system combines physics-driven recoil with precise raycast-based shooting mechanics. Players can fire in any direction with the mouse, instantly generating an impulse force while simultaneously detecting hits on targets.
+                </p>
+
+                <ul>
+                    <li>Raycast-based hit detection for instant, responsive feedback</li>
+                    <li>Bullet trail visual effects showing firing direction and momentum</li>
+                    <li>Hitmarker system providing audio-visual confirmation of successful shots</li>
+                    <li>Weapon responsiveness tuned for tight, predictable control</li>
+                    <li>Right-click alternative firing for variety in movement options</li>
+                </ul>
+
+                <h3 style="color: var(--accent-blue); font-family: 'Orbitron', sans-serif; margin-top: 2rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Target System and Feedback</h3>
+
+                <img src="images/target-system.gif" alt="Target System and Feedback" style="margin: 2rem 0; border: var(--border); border-radius: 0; box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.1), var(--shadow-glow); width: 100%; max-width: 100%;">
+
+                <p>
+                    Targets serve as both gameplay objectives and visual feedback systems. They drive player movement by forcing engagement with specific areas, while their state changes provide clear progression signals through lighting and highlighting systems.
+                </p>
+
+                <ul>
+                    <li>Target highlight system with outline rendering to show interactable objects</li>
+                    <li>Color-coded feedback transitioning from red to green to indicate completion</li>
+                    <li>Dynamic target highlighting when hit or approaching completion</li>
+                    <li>Hit detection system tracking which targets have been eliminated</li>
+                    <li>Visual impact effects on successful target elimination</li>
+                </ul>
+
+                <h3 style="color: var(--accent-orange); font-family: 'Orbitron', sans-serif; margin-top: 2rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Level Progression and Checkpoints</h3>
+
+                <img src="images/level-progression.gif" alt="Level Progression System" style="margin: 2rem 0; border: var(--border); border-radius: 0; box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.1), var(--shadow-glow); width: 100%; max-width: 100%;">
+
+                <p>
+                    Eight progression levels teach momentum control systematically, from basic propulsion to advanced precision platforming. Each level introduces new challenges while building on previous mechanics.
+                </p>
+
+                <ul>
+                    <li>Eight progression levels with increasing mechanical difficulty</li>
+                    <li>Checkpoint system allowing players to respawn at specific progress points</li>
+                    <li>Door system unlocking based on level completion and target elimination</li>
+                    <li>UI system tracking current level, target count, and progression status</li>
+                    <li>Progressive difficulty curve teaching fundamentals before demanding precision</li>
+                </ul>
+
+                <h3 style="color: var(--accent-blue); font-family: 'Orbitron', sans-serif; margin-top: 2rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Aim Training Arena</h3>
+
+                <img src="images/aim-training.gif" alt="Aim Training System" style="margin: 2rem 0; border: var(--border); border-radius: 0; box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.1), var(--shadow-glow); width: 100%; max-width: 100%;">
+
+                <p>
+                    After completing all eight levels, players can access the dedicated Aim Training arena - a specialized environment designed to measure and improve accuracy. A 3x3 grid of targets spawns dynamically, requiring players to quickly identify and eliminate targets while managing momentum and positioning.
+                </p>
+
+                <ul>
+                    <li>3x3 target grid with randomized spawn positions and patterns</li>
+                    <li>Dynamic target appearances testing reaction time and spatial awareness</li>
+                    <li>Hit detection system tracking accuracy percentage and performance metrics</li>
+                    <li>Real-time display of accuracy percentage in top-right HUD</li>
+                    <li>Future score system planned to evaluate multiple performance metrics including acquisition time and consistency</li>
+                </ul>
+
+                <h2>Future Enhancements</h2>
+
+                <p>
+                    Currently, the aim training system tracks accuracy data during gameplay. In future iterations, I plan to implement a comprehensive score system that will evaluate multiple performance metrics including accuracy percentage, hit consistency, target acquisition time, and overall speed. These metrics will be displayed prominently during and after training sessions, allowing players to track progression and identify specific weaknesses in their mechanics.
+                </p>
+
+                <p>
+                    Additional planned features include leaderboard integration, detailed performance analytics, and comparative analysis tools to help players identify improvement areas. The score system will be designed with replay analysis in mind, allowing players to review their performance and understand the physics decisions that led to successful or failed attempts.
+                </p>
+
+                <h2>Why This Approach?</h2>
+
+                <p>
+                    I chose to build a physics prototype rather than a polished game because this project is about demonstrating technical expertise and independent learning. Rather than spreading effort across narrative, art, and game feel, I focused resources entirely on mechanical depth and physics implementation.
+                </p>
+
+                <p>
+                    This decision reflects professional game development practice where specialists deeply understand specific systems. By becoming an expert in impulse-based movement, I've created a portfolio piece that clearly demonstrates mastery of a niche but valuable skillset. Future employers can see concrete proof of my ability to implement complex physics systems and solve problems in real-time.
+                </p>
+
+                <p>
+                    The technical design document, complete with physics calculations and iteration notes, proves I understand the theoretical foundation of my implementation. The progression from teaching levels to aim training arena shows I think about player experience even within a mechanics-focused prototype. This combination - deep technical knowledge plus thoughtful design - is exactly what studios look for in gameplay programmers.
+                </p>
+
+                <h2>Learning Outcomes Achieved</h2>
+
+                <p>
+                    <b>K1 - Area of Specialisation:</b> Physics-based movement systems represent my chosen specialisation within gameplay programming, grounded in industry analysis of momentum-based FPS mechanics.
+                </p>
+
+                <p>
+                    <b>K2 - Independent Evaluation:</b> Weekly development logs documented iteration cycles, problem identification, and solutions throughout the project. Playtesting feedback was systematically collected and implemented.
+                </p>
+
+                <p>
+                    <b>K3 - Subject-Specific Knowledge:</b> Technical design documentation explains force calculations, impulse application, and physics tuning decisions. Code architecture demonstrates understanding of rigidbody systems and custom physics implementation.
+                </p>
+
+                <p>
+                    <b>S1 - Analytical Skills:</b> Development logs show clear identification of weaknesses (physics balancing, air control tuning) with documented improvement strategies.
+                </p>
+
+                <p>
+                    <b>S2 - Industry Learning:</b> Professional documentation standards, performance optimization targeting 60 FPS, and structured playtesting demonstrate real-world development practices.
+                </p>
+
+                <p>
+                    <b>S3 - Effective Presentation:</b> The playable prototype, technical design document, development logs, and presentation materials clearly communicate the project vision and technical achievements.
+                </p>
+
+                <div class="project-buttons">
+                    <a href="index.html" class="back">Back to Portfolio</a>
+                    <a href="https://github.com/AJdevz" target="_blank">Repository</a>
+                    <a href="images/impulse-presentation.pdf" target="_blank">Presentation Slides</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Ahmed Alhaj - Gameplay Programmer Portfolio</p>
+    </footer>
+</body>
+</html>
